@@ -4,8 +4,6 @@ import { useNavigate, useLocation } from 'react-router-dom';
 
 export default function Navbar() {
   const navRef = useRef(null);
-  const btnRef = useRef(null);
-  const [color, setColor] = useState('white');
 
   const homeNavigation = useNavigate('');
 
@@ -23,15 +21,12 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY >= 100) {
+      if (window.scrollY >= 200) {
         navRef.current.style.backdropFilter = 'blur(18px)';
-        navRef.current.style.color = color;
-        // navRef.current.style.color = '#111';
-        setColor('black');
+        navRef.current.style.backgroundColor = '#677294';
       } else {
         navRef.current.style.backdropFilter = 'blur(0px)';
-        navRef.current.style.color = color;
-        setColor('black');
+        navRef.current.style.backgroundColor = 'transparent';
       }
     };
 
@@ -52,15 +47,22 @@ export default function Navbar() {
         zIndex={10}
         variant={'unstyled'}
         value={value}
-        ref={btnRef}
         color={
           (text === 'Home' && location.pathname === '/') ||
           (text === 'Services Us' && location.pathname === '/services') ||
           (text === 'Why Us' && location.pathname === '/why') ||
           (text === 'Our Goals' && location.pathname === '/goals')
-            ? '#111'
+            ? 'white'
             : '#BCBCBC'
         }
+        // color={
+        // (text === 'Home' && location.pathname === '/') ||
+        // (text === 'Services Us' && location.pathname === '/services') ||
+        // (text === 'Why Us' && location.pathname === '/why') ||
+        // (text === 'Our Goals' && location.pathname === '/goals')
+        //     ? '#111'
+        //     : '#BCBCBC'
+        // }
         letterSpacing="0.25px"
         borderBottom={
           (text === 'Home' && location.pathname === '/') ||
@@ -71,21 +73,26 @@ export default function Navbar() {
             : 'none'
         }
         borderRadius={0}
-        _hover={
-          text === 'Home'
-            ? {
-                transform: location.pathname !== '/' ? 'scale(1.05)' : 'null',
-                color: location.pathname !== '/' ? 'black' : 'white',
-              }
-            : {
-                color:
-                  color === 'black' && location.pathname !== '/'
-                    ? '#fff'
-                    : '#111',
-                transform: 'scale(1.05)',
-                transition: 'transform 0.3s ease-out',
-              }
-        }
+        _hover={{
+          color: 'white',
+          transform: 'scale(1.05)',
+          transition: 'transform 0.3s ease-out',
+        }}
+        // _hover={
+        //   text === 'Home'
+        //     ? {
+        //         transform: location.pathname !== '/' ? 'scale(1.05)' : 'null',
+        //         color: location.pathname !== '/' ? 'black' : 'white',
+        //       }
+        //     : {
+        //         color:
+        //           color === 'black' && location.pathname === '/'
+        //             ? '#111'
+        //             : '#fff',
+        // transform: 'scale(1.05)',
+        // transition: 'transform 0.3s ease-out',
+        //       }
+        // }
         onClick={() => handlePages(value)}
       >
         {text}
@@ -99,7 +106,7 @@ export default function Navbar() {
       position={'fixed'}
       top={0}
       width={'100%'}
-      bg={'transparent'}
+      bg={location.pathname !== '/' ? '#677294' : 'transparent'}
       zIndex={10}
       ref={navRef}
     >
@@ -125,9 +132,7 @@ export default function Navbar() {
           />
           <Heading
             zIndex={10}
-            color={
-              color === 'black' || location.pathname !== '/' ? 'black' : 'white'
-            }
+            color={location.pathname !== '/' ? 'black' : 'white'}
             fontWeight={600}
             size={{ base: 'md', md: 'md', lg: 'xl' }}
           >
@@ -137,6 +142,7 @@ export default function Navbar() {
 
         <Flex gap={{ base: 0, md: 5 }}>
           <CreateButtons text="Home" value="/" />
+
           <CreateButtons text="Services Us" value="services" />
           <CreateButtons text="Why Us" value="why" />
           <CreateButtons text="Our Goals" value="goals" />
