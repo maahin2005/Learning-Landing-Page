@@ -1,4 +1,4 @@
-import { Box, Heading } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
 import React, { useEffect } from 'react';
 import SecondSection from '../Components/SecondSection';
 
