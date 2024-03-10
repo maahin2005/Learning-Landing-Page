@@ -32,7 +32,7 @@ function SecondSection() {
   };
 
   return (
-    <section style={{ background: '#F9F9FF' }}>
+    <section style={{ background: '#F9F9FF', marginTop: '100px' }}>
       <Box
         width={{ base: '90%', md: '80%' }}
         margin="auto"

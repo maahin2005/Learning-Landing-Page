@@ -27,7 +27,7 @@ function Home() {
           zIndex={0}
         />
 
-        <Box
+        {/* <Box
           position={'absolute'}
           top={0}
           left={0}
@@ -37,7 +37,33 @@ function Home() {
           backgroundPosition={'center'}
           backgroundSize={'cover'}
           zIndex={0}
+        /> */}
+
+        <Box
+          display={{ base: 'none', lg: 'block' }}
+          className="curve"
+          position={'absolute'}
+          top={0}
+          left={0}
+          width={'100%'}
+          height={'100%'}
+          backgroundPosition={'center'}
+          backgroundSize={'cover'}
+          zIndex={-1}
         />
+        <style>
+          {`.curve::after{
+                  content: '';
+                  display: block;
+                  position: absolute;
+                  border-radius: 0% 0% 45% 100%;
+                  width: 100%;
+                  height: 106%;
+                  background-color: #7FEB00;
+                  z-index: 0;
+            }
+            `}
+        </style>
         <HomeFirst />
       </Box>
       <SecondSection />
@@ -45,7 +71,7 @@ function Home() {
       <ForthSection />
       <Feedback />
       <Box position={'relative'} top={{ md: 100 }}>
-        <ContactUs />
+        <ContactUs columns={2} />
       </Box>
     </>
   );

@@ -42,7 +42,11 @@ function Feedback() {
             Of Discovery, Growth, And Success.
           </Text>
         </Box>
-        <Button display={'flex'} justifyContent={'space-between'} width="15%">
+        <Button
+          display={{ base: 'none', md: 'flex' }}
+          justifyContent={'space-between'}
+          width={{ base: '30%', lg: '15%' }}
+        >
           Read More <FaArrowRight />
         </Button>
       </Box>

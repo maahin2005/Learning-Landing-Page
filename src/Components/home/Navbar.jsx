@@ -1,6 +1,17 @@
 import { Box, Button, Flex, Heading, Image } from '@chakra-ui/react';
 import React, { useEffect, useRef } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import {
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  useDisclosure,
+} from '@chakra-ui/react';
+import ContactUs from '../ContactUs';
 
 export default function Navbar() {
   const navRef = useRef(null);
@@ -8,6 +19,8 @@ export default function Navbar() {
   const homeNavigation = useNavigate('');
 
   const location = useLocation();
+
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   const handleClick = () => {
     window.scrollTo({
@@ -23,7 +36,7 @@ export default function Navbar() {
     const handleScroll = () => {
       if (window.scrollY >= 200) {
         navRef.current.style.backdropFilter = 'blur(18px)';
-        navRef.current.style.backgroundColor = '#677294';
+        navRef.current.style.backgroundColor = '#DA69A3';
       } else if (location.pathname === '/') {
         navRef.current.style.backdropFilter = 'blur(0px)';
         navRef.current.style.backgroundColor = 'transparent';
@@ -55,14 +68,6 @@ export default function Navbar() {
             ? 'white'
             : '#BCBCBC'
         }
-        // color={
-        // (text === 'Home' && location.pathname === '/') ||
-        // (text === 'Services Us' && location.pathname === '/services') ||
-        // (text === 'Why Us' && location.pathname === '/why') ||
-        // (text === 'Our Goals' && location.pathname === '/goals')
-        //     ? '#111'
-        //     : '#BCBCBC'
-        // }
         letterSpacing="0.25px"
         borderBottom={
           (text === 'Home' && location.pathname === '/') ||
@@ -78,21 +83,6 @@ export default function Navbar() {
           transform: 'scale(1.05)',
           transition: 'transform 0.3s ease-out',
         }}
-        // _hover={
-        //   text === 'Home'
-        //     ? {
-        //         transform: location.pathname !== '/' ? 'scale(1.05)' : 'null',
-        //         color: location.pathname !== '/' ? 'black' : 'white',
-        //       }
-        //     : {
-        //         color:
-        //           color === 'black' && location.pathname === '/'
-        //             ? '#111'
-        //             : '#fff',
-        // transform: 'scale(1.05)',
-        // transition: 'transform 0.3s ease-out',
-        //       }
-        // }
         onClick={() => handlePages(value)}
       >
         {text}
@@ -106,7 +96,7 @@ export default function Navbar() {
       position={'fixed'}
       top={0}
       width={'100%'}
-      bg={location.pathname !== '/' ? '#677294' : 'transparent'}
+      bg={location.pathname !== '/' ? '#DA69A3' : 'transparent'}
       zIndex={10}
       ref={navRef}
     >
@@ -154,11 +144,23 @@ export default function Navbar() {
             borderRadius={20}
             zIndex={20}
             fontSize={{ base: '10px' }}
+            onClick={onOpen}
           >
             Contact Us
           </Button>
         </Flex>
       </Flex>
+      <>
+        <Modal isOpen={isOpen} onClose={onClose}>
+          <ModalOverlay />
+          <ModalContent pb={10}>
+            <ModalHeader>Send Mail</ModalHeader>
+            <ModalCloseButton />
+
+            <ContactUs columns={1} />
+          </ModalContent>
+        </Modal>
+      </>
     </Box>
   );
 }

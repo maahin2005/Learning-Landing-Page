@@ -7,16 +7,13 @@ function Service() {
     window.scrollTo({
       top: 0,
       left: 0,
-      behavior: 'smooth',
+      //   behavior: 'smooth',
     });
   }, []);
 
   return (
     <Box p={10}>
-      <Box width={'100%'} margin={'auto'} textAlign={'center'} mt={10}>
-        <Heading size="lg" fontWeight={600} textDecoration={'underline'}>
-          Our Services
-        </Heading>
+      <Box width={'100%'} margin={'auto'} textAlign={'center'} mt={20}>
         <SecondSection />
       </Box>
     </Box>

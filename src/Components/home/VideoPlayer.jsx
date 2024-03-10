@@ -18,6 +18,8 @@ function VideoPlayer() {
       /> */}
       <AspectRatio ratio={16 / 9}>
         <ReactPlayer
+          controls="true"
+          loop={true}
           url="Videos/home-page-vid.mp4"
           playing={true}
           width="100%"

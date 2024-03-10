@@ -70,10 +70,9 @@ export default function HomeFirst() {
                 transition: 'transform 0.3s',
                 borderBottom: '2px solid #FFEC05',
               }}
+              onClick={() => loginNavigator('/services')}
             >
-              <Text display={'inline'} _hover={{}}>
-                Explore More
-              </Text>{' '}
+              <Text display={'inline'}>Explore More</Text>{' '}
               <b
                 style={{
                   marginLeft: '10px',

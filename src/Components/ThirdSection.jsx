@@ -1,8 +1,10 @@
 import { Box, Button, Heading, SimpleGrid, Text } from '@chakra-ui/react';
 import React from 'react';
 import VideoPlayer from './home/VideoPlayer';
+import { useNavigate } from 'react-router-dom';
 
 function ThirdSection() {
+  const navigateTO = useNavigate('');
   return (
     <Box textAlign={'center'} px={{ base: 5, md: 20 }}>
       <Heading>Why Us</Heading>
@@ -46,6 +48,9 @@ function ThirdSection() {
             mt={5}
             borderRadius={20}
             px={{ base: 6, md: 10 }}
+            onClick={() => {
+              navigateTO('/services');
+            }}
           >
             Get More
           </Button>

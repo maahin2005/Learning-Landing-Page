@@ -10,7 +10,7 @@ import {
 } from '@chakra-ui/react';
 import React, { useState } from 'react';
 
-function ContactUs() {
+function ContactUs({ columns }) {
   const [email, setEmail] = useState('');
   const msgToast = useToast();
 
@@ -38,10 +38,14 @@ function ContactUs() {
       bg="#333697"
       color={'white'}
       borderRadius={10}
-      width={{ base: '90%', md: '80%', lg: '60%' }}
+      width={{ base: '90%', md: '80%', lg: '70%' }}
       margin={'auto'}
     >
-      <SimpleGrid columns={{ base: 1, md: 2 }} alignItems="center" gap={5}>
+      <SimpleGrid
+        columns={{ base: 1, md: columns }}
+        alignItems="center"
+        gap={5}
+      >
         <Box>
           <Heading fontWeight={600}>Contact Us</Heading>
           <Text mt={5}>
