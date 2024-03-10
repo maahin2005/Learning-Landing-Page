@@ -1,8 +1,22 @@
 import React from 'react';
 import { Box, Heading, SimpleGrid, Text, Button } from '@chakra-ui/react';
 import VideoPlayer from './VideoPlayer';
+import {
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  useDisclosure,
+} from '@chakra-ui/react';
+import { useNavigate } from 'react-router-dom';
 
 export default function HomeFirst() {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const loginNavigator = useNavigate('');
   return (
     <Box>
       <SimpleGrid
@@ -19,7 +33,7 @@ export default function HomeFirst() {
           </Heading>
           <Text
             my={6}
-            fontSize={{ base: '.4rem', md: '1rem' }}
+            fontSize={{ base: '.8rem', md: '1rem' }}
             fontWeight={600}
           >
             Unlimited Access To 100+ World-Class Courses, Hands-On <br />
@@ -41,6 +55,7 @@ export default function HomeFirst() {
               borderRadius={20}
               fontSize={{ base: '10px', sm: '.5rem' }}
               color={'black'}
+              onClick={onOpen}
             >
               Book Demo Class
             </Button>
@@ -73,15 +88,31 @@ export default function HomeFirst() {
           <VideoPlayer />
         </Box>
       </SimpleGrid>
+
+      <>
+        <Modal isOpen={isOpen} onClose={onClose}>
+          <ModalOverlay />
+          <ModalContent>
+            <ModalHeader>Book Demo</ModalHeader>
+            <ModalCloseButton />
+            <ModalBody>
+              <Heading size="md">For Booking Demo do Login</Heading>
+            </ModalBody>
+
+            <ModalFooter>
+              <Button colorScheme="blue" mr={3} onClick={onClose}>
+                Close
+              </Button>
+              <Button
+                variant="ghost"
+                onClick={() => loginNavigator('/account-page')}
+              >
+                Login
+              </Button>
+            </ModalFooter>
+          </ModalContent>
+        </Modal>
+      </>
     </Box>
   );
 }
-
-// //   <Image
-// src="/Images/right-arrow.svg"
-// alt="arrow"
-// display={'inline'}
-// _hover={{
-//   color: '#FFEC05',
-// }}
-// />

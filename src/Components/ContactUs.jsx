@@ -6,10 +6,32 @@ import {
   Input,
   SimpleGrid,
   Text,
+  useToast,
 } from '@chakra-ui/react';
-import React from 'react';
+import React, { useState } from 'react';
 
 function ContactUs() {
+  const [email, setEmail] = useState('');
+  const msgToast = useToast();
+
+  const handleSend = () => {
+    if (email.trim() === '') {
+      msgToast({
+        title: 'Error',
+        description: 'Enter Valid Email',
+        status: 'error',
+        isClosable: true,
+      });
+    } else {
+      msgToast({
+        title: 'Message Sent',
+        status: 'success',
+        isClosable: true,
+      });
+    }
+    setEmail('');
+  };
+
   return (
     <Box
       p={{ base: 5, md: 10 }}
@@ -36,13 +58,22 @@ function ContactUs() {
           width={'100%'}
         >
           <Input
+            type="email"
+            value={email}
             placeholder="Email here"
             variant={'unstyled'}
             border={'none'}
             outline={'none'}
             color={'#7C7C7C'}
+            required
+            onChange={e => setEmail(e.target.value)}
           />
-          <Button bg="#FFEC05" borderRadius={20} width={'30%'}>
+          <Button
+            bg="#FFEC05"
+            borderRadius={20}
+            width={'30%'}
+            onClick={handleSend}
+          >
             Send
           </Button>
         </Flex>

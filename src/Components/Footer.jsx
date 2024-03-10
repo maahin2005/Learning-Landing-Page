@@ -67,13 +67,13 @@ export default function Footer() {
                 >
                   Support
                 </Text>
-                <CreateText text="Home" />
-                <CreateText text="Pricing" />
-                <CreateText text="Download" />
-                <CreateText text="About" />
-                <CreateText text="Service" />
+                <CreateText text="FAQ" />
+                <CreateText text="How it" />
+                <CreateText text="Features" />
+                <CreateText text="Contact" />
+                <CreateText text="Reporting" />
               </Box>
-              <Box margin="auto">
+              <Box margin={{ base: 'auto', sm: '0' }}>
                 <Text
                   fontWeight={700}
                   mb={5}

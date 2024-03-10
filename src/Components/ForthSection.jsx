@@ -4,10 +4,21 @@ import React from 'react';
 function ForthSection() {
   const CreateCarts = ({ imgSrc, number, desc, color }) => {
     return (
-      <Flex gap={3} alignItems={'center'} textAlign={'left'}>
+      <Flex
+        gap={3}
+        alignItems={'center'}
+        textAlign={'left'}
+        margin={'auto'}
+        _hover={{
+          transform: 'scale(1.05)',
+          transition: 'transform 0.3s ease-out',
+        }}
+      >
         <Image src={imgSrc} />
         <Box>
-          <Text color={'#1453FF'}>{number}+</Text>
+          <Text color={'#1453FF'} fontWeight={600} fontSize={'1.5rem'}>
+            {number}+
+          </Text>
           <Text color={color} fontWeight={600}>
             {desc}
           </Text>
@@ -38,6 +49,7 @@ function ForthSection() {
           <br /> Embark On A Journey Of Discovery, Growth, And Success.
         </Text>
         <SimpleGrid
+          margin={'auto'}
           mt={10}
           columns={{ base: 1, sm: 2, lg: 4 }}
           gap={10}
@@ -51,19 +63,19 @@ function ForthSection() {
           />
           <CreateCarts
             imgSrc="/Images/people.svg"
-            number={100}
+            number={50}
             desc="Active Batches"
             color={'#242424'}
           />
           <CreateCarts
             imgSrc="/Images/true.svg"
-            number={100}
+            number={'10,000'}
             desc="Student Satisfied"
             color={'#242424'}
           />
           <CreateCarts
             imgSrc="/Images/people.svg"
-            number={100}
+            number={10}
             desc="Course Modules"
             color={'#242424'}
           />

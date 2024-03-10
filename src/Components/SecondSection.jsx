@@ -7,9 +7,14 @@ function SecondSection() {
       <Box
         p={{ base: 2, md: 10 }}
         textAlign={'center'}
-        height={sepH}
+        height={{ base: 'max-content', lg: { sepH } }}
         boxShadow={boxS}
         width={'fit-content'}
+        cursor={'pointer'}
+        _hover={{
+          transform: 'scale(1.05)',
+          transition: 'transform 0.3s ease-out',
+        }}
       >
         <Image src={imgSrc} alt={'title'} margin={'auto'} />
         <Heading size={{ base: 'sm', md: 'lg', lg: 'xl' }}>{title}</Heading>
@@ -70,10 +75,15 @@ function SecondSection() {
             textAlign={'center'}
             width={'fit-content'}
             boxShadow={'md'}
-            height={'500px'}
+            height={{ base: 'max-content', lg: '500px' }}
             position={'relative'}
             bottom={{ md: 25 }}
             bg={'#ffea0536'}
+            cursor={'pointer'}
+            _hover={{
+              transform: 'scale(1.05)',
+              transition: 'transform 0.3s ease-out',
+            }}
           >
             <Image
               src={'/Images/Dashboard.svg'}
