@@ -1,5 +1,5 @@
 import { Box, Button, Flex, Heading, Image } from '@chakra-ui/react';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 export default function Navbar() {
@@ -24,7 +24,7 @@ export default function Navbar() {
       if (window.scrollY >= 200) {
         navRef.current.style.backdropFilter = 'blur(18px)';
         navRef.current.style.backgroundColor = '#677294';
-      } else {
+      } else if (location.pathname === '/') {
         navRef.current.style.backdropFilter = 'blur(0px)';
         navRef.current.style.backgroundColor = 'transparent';
       }
@@ -34,7 +34,7 @@ export default function Navbar() {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
+  }, [location.pathname]);
 
   const handlePages = path => {
     homeNavigation(path);
